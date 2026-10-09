@@ -72,7 +72,7 @@ const VideoIntro = () => {
           justifyContent: 'center',
           overflow: 'hidden',
           zIndex: 10,
-          background: 'linear-gradient(160deg, #f5fce8 0%, #ddf5a8 45%, #b8eda0 100%)',
+          background: 'transparent',
           padding: 0,
           boxSizing: 'border-box',
         }}

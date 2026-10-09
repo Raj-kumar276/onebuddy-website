@@ -37,7 +37,12 @@ const Footer = () => {
         >
           {/* Brand column */}
           <div>
-            <div className="footer-logo">
+            <div className="footer-logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img
+                src="/onebuddy_logo.png"
+                alt="OneBuddy"
+                style={{ height: '40px', display: 'block' }}
+              />
               OneBuddy
             </div>
             <p className="footer-brand-desc">

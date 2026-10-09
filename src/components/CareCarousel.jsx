@@ -118,6 +118,12 @@ const CareCarousel = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (index % 5) * 0.1 }}
+              whileHover={{
+                scale: isSelected ? 1.08 : 1.05,
+                boxShadow: '0 0 32px rgba(126,196,0,0.55), 0 20px 45px rgba(0,0,0,0.25)',
+                y: -6,
+                transition: { duration: 0.22, ease: 'easeOut' }
+              }}
               animate={{
                 scale: isSelected ? 1.05 : 1,
                 boxShadow: isSelected

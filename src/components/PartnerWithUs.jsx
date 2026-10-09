@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Search, Handshake, Rocket } from 'lucide-react';
 import PartnerServices from './PartnerServices';
@@ -10,7 +10,8 @@ const steps = [
     title: 'Submit Your Application',
     desc: 'Fill out our simple partner registration form with your business details, service type, and contact information.',
     color: '#10b981',
-    image: 'https://images.unsplash.com/photo-1554774853-719586f82d77?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=400',
+    bgPosition: 'center center',
   },
   {
     number: '02',
@@ -18,7 +19,8 @@ const steps = [
     title: 'Verification & Review',
     desc: 'Our team will verify your documents and review your application within 2–3 business days.',
     color: '#8b5cf6',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=400',
+    bgPosition: 'top center',
   },
   {
     number: '03',
@@ -26,7 +28,8 @@ const steps = [
     title: 'Agreement & Onboarding',
     desc: 'Sign the partnership agreement and complete the onboarding training with our dedicated support team.',
     color: '#f59e0b',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=400',
+    bgPosition: 'center center',
   },
   {
     number: '04',
@@ -34,12 +37,20 @@ const steps = [
     title: 'Go Live & Earn',
     desc: 'Get listed on OneBuddy, start receiving orders, and grow your business with our platform.',
     color: '#ec4899',
-    image: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=400',
+    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=400',
+    bgPosition: 'center top',
   },
 ];
 
 
 const PartnerWithUs = ({ onClose }) => {
+
+  // Always start at the top of the partner page
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   return (
     <div className="partner-page">
@@ -93,7 +104,8 @@ const PartnerWithUs = ({ onClose }) => {
                   <div
                     className="process__card-inner"
                     style={{
-                      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)), url(${step.image})`
+                      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)), url(${step.image})`,
+                      backgroundPosition: step.bgPosition || 'center center',
                     }}
                   >
                     <span className="process__number" aria-hidden="true" style={{ color: step.color }}>
