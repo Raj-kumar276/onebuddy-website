@@ -88,15 +88,20 @@ export default function Services() {
         },
       });
 
-      gsap.set(imgs, { clipPath: "inset(0)", objectPosition: "0px 0%" });
+      // First image fully visible, all others start hidden (clipped from top so they wipe up from bottom)
+      gsap.set(imgs[0], { clipPath: "inset(0% 0% 0% 0%)", objectPosition: "0px 0%" });
+      gsap.set(imgs.slice(1), { clipPath: "inset(100% 0% 0% 0%)", objectPosition: "0px 0%" });
 
       imgs.slice(0, -1).forEach((img, i) => {
         main.add(
           gsap
             .timeline()
+            // Fade background colour to next service
             .to(el, { backgroundColor: SERVICES[i + 1].bg, duration: 1.5, ease: "power2.inOut" }, 0)
-            .to(img, { clipPath: "inset(0px 0px 100%)", objectPosition: "0px 60%", duration: 1.5, ease: "none" }, 0)
-            .to(imgs[i + 1], { objectPosition: "0px 40%", duration: 1.5, ease: "none" }, 0)
+            // Slide the NEXT image up from the bottom, covering the current one cleanly
+            .to(imgs[i + 1], { clipPath: "inset(0% 0% 0% 0%)", duration: 1, ease: "none" }, 0)
+            // Add a slight parallax to the old image as it gets covered
+            .to(img, { objectPosition: "0px 40%", duration: 1.5, ease: "none" }, 0)
         );
       });
     }, root);
@@ -146,7 +151,7 @@ export default function Services() {
               <div
                 className="srv-img-wrapper"
                 key={svc.id}
-                style={{ zIndex: SERVICES.length - i }}
+                style={{ zIndex: i + 1 }}  /* each next service is rendered above the previous */
               >
                 <img className="srv-arch__img" src={svc.img} alt={svc.title} />
               </div>

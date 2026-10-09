@@ -235,3 +235,10 @@
         transform: none;
       }
     }
+
+    /* ── Mobile: reduce orbit size by 5% ── */
+    @media (max-width: 768px) {
+      #splash {
+        --field: min(570px, 90vw, 64vh); /* ~5% smaller than default */
+      }
+    }

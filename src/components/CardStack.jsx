@@ -111,14 +111,14 @@ export default function CardStack({ cards = CARDS }) {
   const getArcTransform = useCallback((offset, isMobile) => {
     const angleStep = isMobile ? 24 : 28;
     const angleRad = (offset * angleStep * Math.PI) / 180;
-    
+
     // Half-circle arc geometry
     const radius = isMobile ? 200 : 320;
     const x = Math.sin(angleRad) * radius + offset * (isMobile ? 18 : 35);
     const y = (1 - Math.cos(angleRad)) * (isMobile ? 70 : 100) + Math.abs(offset) * (isMobile ? 12 : 18);
     const rot = offset * (isMobile ? 10 : 14);
     const scale = Math.max(0.65, 1 - Math.abs(offset) * 0.12);
-    
+
     // Opacity based on distance from center
     let opacity = 1;
     const abs = Math.abs(offset);
@@ -168,10 +168,10 @@ export default function CardStack({ cards = CARDS }) {
         pin: true,
         scrub: 0.5,
         start: "top top",
-        end: `+=${(total - 1) * 600}`,
+        end: `+=${(total - 1) * 400}`, // 400px per card makes 1 normal scroll tick advance exactly 1 card
         snap: {
-          snapTo: (value) => Math.round(value * (total - 1)) / (total - 1),
-          duration: { min: 0.2, max: 0.45 },
+          snapTo: 1 / (total - 1),
+          duration: { min: 0.15, max: 0.3 }, // Fast snap
           delay: 0.05,
           ease: "power1.inOut",
         },

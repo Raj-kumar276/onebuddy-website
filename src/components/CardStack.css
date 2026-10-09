@@ -94,8 +94,8 @@
 /* Individual Arc Card */
 .service-card {
   position: absolute;
-  width: min(330px, 80vw);
-  height: 460px;
+  width: min(290px, 75vw);
+  height: 400px;
   box-sizing: border-box;
   user-select: none;
   cursor: pointer;
@@ -129,14 +129,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .card-index-badge {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 900;
   background: rgba(0, 0, 0, 0.18);
   padding: 4px 10px;
@@ -150,33 +150,33 @@
 
 .artist-prefix {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   background: rgba(0, 0, 0, 0.14);
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 8px;
   margin-bottom: 12px;
 }
 
 .artist-name {
-  font-family: inherit;
-  font-size: clamp(2rem, 3.8vw, 2.7rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
 .artist-name.big {
-  font-size: clamp(2.2rem, 4.2vw, 3rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
 }
 
 .card-footer {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
 }
 
@@ -263,11 +263,13 @@
     height: 70vh;
     min-height: 460px;
     border-radius: 20px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 
   .service-card {
-    width: min(240px, 75vw);
-    height: 340px;
+    width: min(220px, 70vw);
+    height: 320px;
   }
 
   .service-card-inner {
@@ -276,11 +278,11 @@
   }
 
   .artist-name {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 
   .artist-name.big {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
   }
 
   .cs-nav-btn {
