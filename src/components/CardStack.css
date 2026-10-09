@@ -1,0 +1,275 @@
+/* CardStack.css - Half-Circle Arc Gallery with 1-by-1 Scroll */
+.cs-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.cs {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  min-height: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 120%, rgba(101, 163, 13, 0.12) 0%, #101014 60%, #0a0a0d 100%);
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Background Arc Glow */
+.cs-arc-glow {
+  position: absolute;
+  width: min(800px, 90vw);
+  height: min(400px, 45vw);
+  border-radius: 500px 500px 0 0;
+  border-top: 2px dashed rgba(255, 255, 255, 0.15);
+  border-left: 1px dashed rgba(255, 255, 255, 0.08);
+  border-right: 1px dashed rgba(255, 255, 255, 0.08);
+  bottom: 60px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.cs-header-hint {
+  position: absolute;
+  top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  padding: 8px 22px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cs-hint-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e4e4e7;
+}
+
+.cs-hint-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #84cc16;
+  box-shadow: 0 0 12px #84cc16;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+/* Half Circle Stage */
+.card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+/* Individual Arc Card */
+.service-card {
+  position: absolute;
+  width: min(330px, 80vw);
+  height: 460px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  transition: filter 0.3s ease;
+}
+
+.service-card-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1.5px rgba(255, 255, 255, 0.22) inset;
+  box-sizing: border-box;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.service-card.is-active .service-card-inner {
+  box-shadow: 0 35px 70px -10px rgba(0, 0, 0, 0.75), 0 0 0 2px rgba(255, 255, 255, 0.45) inset, 0 0 40px rgba(101, 163, 13, 0.25);
+}
+
+.service-card:hover .service-card-inner {
+  transform: translateY(-12px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-index-badge {
+  font-size: 0.78rem;
+  font-weight: 900;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 4px 10px;
+  border-radius: 8px;
+  opacity: 0.9;
+}
+
+.artist-section {
+  margin: auto 0;
+}
+
+.artist-prefix {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  background: rgba(0, 0, 0, 0.14);
+  padding: 5px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.artist-name {
+  font-family: inherit;
+  font-size: clamp(2rem, 3.8vw, 2.7rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.artist-name.big {
+  font-size: clamp(2.2rem, 4.2vw, 3rem);
+}
+
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.card-footer div {
+  background: rgba(0, 0, 0, 0.12);
+  padding: 5px 10px;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+  line-height: 1.2;
+}
+
+/* Arc navigation controls */
+.cs-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 60;
+  transition: all 0.25s ease;
+}
+
+.cs-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-50%) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cs-nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  transform: translateY(-50%) scale(1);
+}
+
+.cs-nav-prev {
+  left: 20px;
+}
+
+.cs-nav-next {
+  right: 20px;
+}
+
+/* Dots tracker at the bottom */
+.cs-progress-dots {
+  position: absolute;
+  bottom: 24px;
+  display: flex;
+  gap: 10px;
+  z-index: 50;
+}
+
+.cs-progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cs-progress-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.cs-progress-dot.active {
+  background: #84cc16;
+  width: 28px;
+  border-radius: 12px;
+}
+
+@media (max-width: 767px) {
+  .cs {
+    height: 80vh;
+    min-height: 560px;
+    border-radius: 26px;
+  }
+  .service-card {
+    width: min(290px, 82vw);
+    height: 420px;
+  }
+  .service-card-inner {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+  .artist-name {
+    font-size: 1.8rem;
+  }
+  .artist-name.big {
+    font-size: 2rem;
+  }
+  .cs-nav-btn {
+    display: none;
+  }
+}

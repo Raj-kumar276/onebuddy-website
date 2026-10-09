@@ -1,0 +1,237 @@
+
+.orbit-animation-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-deep, #FFFFFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+    #splash {
+      --field: min(600px, 95vw, 68vh);
+      --badge: calc(var(--field) * 0.285);
+      --orbit-r: calc(var(--field) * 0.41);
+      --orbit-time: 20s;
+      background: var(--bg-deep);
+      padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+    }
+
+    #splash::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(120% 70% at 50% 26%, rgba(126, 196, 0, .12), rgba(126, 196, 0, 0) 65%), radial-gradient(90% 55% at 50% 100%, rgba(27, 27, 27, .04), rgba(27, 27, 27, 0) 70%);
+    }
+
+    #splash .ob-stack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    #splash .ob-field {
+      position: relative;
+      width: var(--field);
+      height: var(--field);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #splash .ob-guide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(var(--orbit-r) * 2);
+      height: calc(var(--orbit-r) * 2);
+      margin: calc(var(--orbit-r) * -1) 0 0 calc(var(--orbit-r) * -1);
+      border-radius: 50%;
+      border: 1.5px dashed rgba(27, 27, 27, .18);
+      animation: ob-spin calc(var(--orbit-time) * 2.6) linear infinite reverse;
+      opacity: 0;
+      transition: opacity .6s ease .3s, transform .45s ease;
+    }
+
+    #splash .ob-field.deployed .ob-guide {
+      opacity: 1;
+    }
+
+    #splash .ob-layer {
+      position: absolute;
+      inset: 0;
+      will-change: transform;
+      animation: ob-spin var(--orbit-time) linear infinite;
+    }
+
+    /* spans need to be blocks — transform is ignored on an inline box, which
+   silently kills the counter-rotation and lets the icons tumble */
+    #splash .ob-slot,
+    #splash .ob-counter,
+    #splash .ob-badge {
+      display: block;
+    }
+
+    #splash .ob-slot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: rotate(var(--a)) translate(0, 0);
+      transition: transform .95s cubic-bezier(.34, 1.5, .5, 1);
+      transition-delay: var(--d, 0s);
+    }
+
+    #splash .ob-field.deployed .ob-slot {
+      transform: rotate(var(--a)) translate(0, calc(var(--orbit-r) * -1));
+    }
+
+    #splash .ob-counter {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: var(--badge);
+      height: var(--badge);
+      margin: calc(var(--badge) / -2) 0 0 calc(var(--badge) / -2);
+      animation: ob-spin var(--orbit-time) linear infinite reverse;
+    }
+
+    #splash .ob-badge {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(27, 40, 10, .18), 0 0 0 1px rgba(27, 27, 27, .08);
+      transform: rotate(calc(var(--a) * -1)) scale(.2);
+      opacity: 0;
+      overflow: hidden;
+      transition: transform .95s cubic-bezier(.34, 1.5, .5, 1), opacity .4s ease;
+      transition-delay: var(--d, 0s);
+    }
+
+    #splash .ob-field.deployed .ob-badge {
+      transform: rotate(calc(var(--a) * -1)) scale(1);
+      opacity: 1;
+    }
+
+    #splash .ob-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    #splash .ob-mark {
+      position: relative;
+      z-index: 3;
+      transform-origin: 50% 100%;
+    }
+
+    #splash .ob-plate {
+      position: relative;
+      width: calc(var(--field) * 0.52);
+      height: calc(var(--field) * 0.52);
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 46%, #FFFFFF 60%, rgba(126, 196, 0, .14) 80%, rgba(126, 196, 0, 0) 100%);
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: ob-rise .9s cubic-bezier(.22, 1, .36, 1) both;
+    }
+
+    #splash .ob-plate img {
+      width: auto;
+      height: calc(var(--field) * 0.40);
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .15));
+      display: block;
+    }
+
+    #splash .ob-thruster {
+      position: absolute;
+      top: 86%;
+      left: 50%;
+      width: calc(var(--field) * 0.17);
+      height: 0;
+      margin-left: calc(var(--field) * -0.085);
+      background: linear-gradient(to bottom, var(--gold-light), rgba(126, 196, 0, .5) 42%, rgba(126, 196, 0, 0));
+      filter: blur(7px);
+      opacity: 0;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* the name lives below the whole orbit, never inside the ring */
+    #splash .ob-name {
+      margin-top: calc(var(--field) * 0.055);
+    }
+
+    #splash .wordmark {
+      font-size: clamp(34px, 11vw, 54px);
+      letter-spacing: -0.022em;
+      line-height: 1.05;
+      margin-bottom: 0;
+      animation: ob-rise .8s cubic-bezier(.22, 1, .36, 1) .22s both;
+    }
+
+    #splash .ob-tagline {
+      margin-top: 8px;
+      font-size: clamp(14px, 3.8vw, 17px);
+      font-weight: 500;
+      color: var(--mist-dim);
+      animation: ob-rise .8s cubic-bezier(.22, 1, .36, 1) .34s both;
+    }
+
+    #splash .ob-tagline b {
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    #splash .ob-cta {
+      margin-top: clamp(22px, 5vh, 38px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      animation: ob-rise .8s cubic-bezier(.22, 1, .36, 1) .46s both;
+    }
+
+    #splash .ob-alt {
+      display: flex;
+      gap: 26px;
+    }
+
+    #splash .ob-alt button {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mist-dim);
+      transition: color .18s ease;
+    }
+
+    #splash .ob-alt button:hover {
+      color: var(--gold);
+    }
+
+    @keyframes ob-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes ob-rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
