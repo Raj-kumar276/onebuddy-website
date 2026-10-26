@@ -45,11 +45,11 @@ const TypewriterPara = () => {
 
   // Split displayed text so we can bold the phrase once it's reached
   const boldStart = FULL_TEXT.indexOf(BOLD_PHRASE);
-  const boldEnd   = boldStart + BOLD_PHRASE.length;
+  const boldEnd = boldStart + BOLD_PHRASE.length;
 
   const before = displayed.slice(0, boldStart);
-  const bold   = displayed.slice(boldStart, Math.min(displayed.length, boldEnd));
-  const after  = displayed.slice(boldEnd);
+  const bold = displayed.slice(boldStart, Math.min(displayed.length, boldEnd));
+  const after = displayed.slice(boldEnd);
 
   return (
     <p className="about-description" ref={ref}>
@@ -89,24 +89,7 @@ const About = () => {
             About Us
           </motion.span>
 
-          <motion.h2
-            className="about-heading"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            About Us –{' '}
-            <motion.span
-              className="about-heading-brand"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              One Buddy
-            </motion.span>
-          </motion.h2>
+
 
           <motion.div
             className="about-divider"

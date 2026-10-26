@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const SERVICES = [
   {
     id: "food",
-    title: "Your favorite meals, delivered hot.",
+    title: "Your favorite meals delivered hot",
     color: "#f97316",
     bg: "#fff7ed",
     img: imgFood,
@@ -22,7 +22,7 @@ const SERVICES = [
   },
   {
     id: "groceries",
-    title: "Everyday essentials, made simple.",
+    title: "Everyday essentials made simple",
     color: "#10b981",
     bg: "#ecfdf5",
     img: imgGroceries,
@@ -30,15 +30,15 @@ const SERVICES = [
   },
   {
     id: "ride",
-    title: "Move freely. Reach anywhere.",
+    title: "Move freely Reach anywhere",
     color: "#8b5cf6",
     bg: "#f5f3ff",
     img: imgRide,
-    desc: "Safe, reliable, and comfortable rides whenever you need them — whether a quick bike ride across town or a premium cab for longer journeys.",
+    desc: "Safe, reliable, and comfortable rides whenever you need them — whether it’s a quick bike ride, a convenient auto trip, or a comfortable car journey.",
   },
   {
     id: "care",
-    title: "Healthcare that stays closer to you.",
+    title: "Care That Comes Closer to You",
     color: "#ec4899",
     bg: "#fdf2f8",
     img: imgCare,
@@ -46,7 +46,7 @@ const SERVICES = [
   },
   {
     id: "home",
-    title: "Comfort and care for every corner.",
+    title: "Comfort and care for every corner",
     color: "#f59e0b",
     bg: "#fffbeb",
     img: imgHome,
@@ -124,7 +124,7 @@ export default function Services() {
       <div className="srv-header-wrap">
         <span className="srv-overline">What We Offer</span>
         <h2 className="srv-headline">
-          Five services. <em>One</em> platform.
+          Five services <em>One</em> platform
         </h2>
         <p style={{ marginTop: "1.25rem", fontSize: "1.25rem", color: "var(--brand-primary, #7EC400)", fontWeight: 700 }}>
           Use More, Save More
@@ -151,7 +151,10 @@ export default function Services() {
               <div
                 className="srv-img-wrapper"
                 key={svc.id}
-                style={{ zIndex: i + 1 }}  /* each next service is rendered above the previous */
+                style={{
+                  zIndex: i + 1,
+                  top: "calc(50% + 35px)",
+                }}
               >
                 <img className="srv-arch__img" src={svc.img} alt={svc.title} />
               </div>

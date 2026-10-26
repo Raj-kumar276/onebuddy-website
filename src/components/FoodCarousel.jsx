@@ -16,8 +16,8 @@ const ITEMS = [
   { title: 'Hakka Noodles', image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&q=80&w=600', otherPrice: 150, ourPrice: 139 },
   { title: 'Vanilla Ice Cream', image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&q=80&w=600', otherPrice: 100, ourPrice: 60 },
   { title: 'Glazed Donut Box', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=600', otherPrice: 99, ourPrice: 55 },
-  { title: 'Nutella Waffle', image: 'https://images.unsplash.com/photo-1504382103100-db7e92322d39?auto=format&fit=crop&q=80&w=600', otherPrice: 99, ourPrice: 45 },
-  { title: 'Chicken Shawarma Wrap', image: 'https://images.unsplash.com/photo-1561651188-d207bbec4ec3?auto=format&fit=crop&q=80&w=600', otherPrice: 95, ourPrice: 65 },
+  { title: 'Nutella Waffle', image: 'https://i.pinimg.com/736x/65/7f/c6/657fc6927bb8ce0b2629ef503a2be5b8.jpg', otherPrice: 99, ourPrice: 45 },
+  { title: 'Chicken Shawarma Wrap', image: 'https://i.pinimg.com/736x/38/b9/7a/38b97a76f42371014e40bf6643fa1c02.jpg', otherPrice: 95, ourPrice: 65 },
   { title: 'Large French Fries', image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&q=80&w=600', otherPrice: 159, ourPrice: 115 },
   { title: 'Tomato Basil Soup', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=600', otherPrice: 129, ourPrice: 99 },
   { title: 'Butter Chicken Curry', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=600', otherPrice: 299, ourPrice: 255 },
@@ -60,9 +60,9 @@ const ComparisonCarousel = () => {
 
   return (
     <section className="comparison-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
-      <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+      <div className="container carousel-header-wrap">
         <h2 style={{
-          fontSize: 'clamp(2rem, 4vw, 3rem)',
+          fontSize: 'clamp(1.75rem, 4vw, 3rem)',
           fontWeight: '800',
           color: '#1B1B1B',
           marginBottom: '0.5rem',
@@ -70,7 +70,10 @@ const ComparisonCarousel = () => {
         }}>
           Smart <span style={{ color: '#5FA300' }}>Honest Prices</span>, now in your <span style={{ color: '#7EC400' }}>city</span>
         </h2>
-        <b><p style={{ color: '#666', fontSize: '1.1rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img src="/food_logo.png" alt="Food Logo" style={{ height: '35px', marginRight: '10px' }} /> Food prices on OneBuddy vs Other Stores. </p></b>
+        <p className="carousel-badge-title">
+          <img src="/food_logo.png" alt="Food Logo" className="carousel-badge-icon" />
+          <span className="carousel-badge-text">Food prices on OneBuddy vs Other Stores.</span>
+        </p>
       </div>
 
       {/* Carousel Container */}

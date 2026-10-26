@@ -46,9 +46,11 @@ const ComparisonCarousel = () => {
 
     return (
         <section className="comparison-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
-            <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-
-                <b><p style={{ color: '#666', fontSize: '1.1rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img src="/home_logo.png" alt="Home Services Logo" style={{ height: '35px', marginRight: '10px' }} /> Home Services prices on OneBuddy vs Other Stores.</p></b>
+            <div className="container carousel-header-wrap">
+                <p className="carousel-badge-title">
+                    <img src="/home_logo.png" alt="Home Services Logo" className="carousel-badge-icon" />
+                    <span className="carousel-badge-text">Home Services prices on OneBuddy vs Other Stores.</span>
+                </p>
             </div>
 
             {/* Carousel Container */}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Search, Handshake, Rocket } from 'lucide-react';
+import { FileText, Search, Handshake, Rocket, ArrowLeft } from 'lucide-react';
 import PartnerServices from './PartnerServices';
 
 const steps = [
@@ -55,8 +55,13 @@ const PartnerWithUs = ({ onClose }) => {
   return (
     <div className="partner-page">
       {/* Close Button */}
-      <button className="partner-close-btn" onClick={onClose} aria-label="Close">
-        ✕ Back to Home
+      <button
+        className="partner-close-btn"
+        onClick={onClose}
+        aria-label="Back to Home"
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+      >
+        <ArrowLeft size={18} /> Back to Home
       </button>
 
       {/* Hero Image — full width, half screen height */}
