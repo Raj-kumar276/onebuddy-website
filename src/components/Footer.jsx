@@ -38,11 +38,22 @@ const Footer = () => {
           {/* Brand column */}
           <div>
             <div className="footer-logo" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <img
-                src="/onebuddy_logo.png"
-                alt="OneBuddy"
-                style={{ height: '40px', display: 'block' }}
-              />
+              <div
+                style={{
+                  background: '#ffffff',
+                  borderRadius: '11px',
+                  padding: '4px 6px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <img
+                  src="/onebuddy_logo.png"
+                  alt="OneBuddy"
+                  style={{ height: '36px', display: 'block' }}
+                />
+              </div>
               OneBuddy
             </div>
             <p className="footer-brand-desc">
@@ -51,18 +62,19 @@ const Footer = () => {
             </p>
             <div className="footer-social">
               {/* Instagram */}
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/onebuddy.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <circle cx="12" cy="12" r="4" />
                   <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
                 </svg>
               </a>
-              {/* Twitter / X */}
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              {/* LinkedIn */}
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4l16 16M4 20L20 4" />
-                  <path d="M20 4h-5l-11 16h5" />
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
                 </svg>
               </a>
               {/* WhatsApp */}
@@ -72,7 +84,7 @@ const Footer = () => {
                 </svg>
               </a>
               {/* Facebook */}
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/people/Onebuddyin/61593953512149/?fb_profile_edit_entry_point=%7B%22click_point%22%3A%22edit_profile_button%22%2C%22feature%22%3A%22profile_header%22%7D&sk=about" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>

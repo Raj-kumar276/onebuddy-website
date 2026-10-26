@@ -68,8 +68,8 @@ const APP_SERVICES = [
 
 const TypewriterText = () => {
   const [text, setText] = useState("");
-  const fullText = "Everything you need. One Buddy away.";
-  
+  const fullText = "Everything you need  One Buddy away ";
+
   useEffect(() => {
     let i = 0;
     let isDeleting = false;
@@ -126,7 +126,7 @@ const TypewriterText = () => {
 const TypewriterDesc = () => {
   const [text, setText] = useState("");
   const fullText = "OneBuddy brings together Food, Grocery, Rides, Home Services, and Care — all in one simple, seamless platform. Your everyday needs, handled by one buddy you can count on.";
-  
+
   useEffect(() => {
     let i = 0;
     let timeoutId;
@@ -176,7 +176,7 @@ const Hero = () => {
     <section id="home" className="hero-split">
       <div className="container">
         <div className="hero-grid">
-          <motion.div 
+          <motion.div
             className="hero-text-content"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -186,19 +186,19 @@ const Hero = () => {
               <span className="hero-pill-dot"></span>
               All-in-One Platform
             </div>
-            
+
             <TypewriterText />
-            
+
             <TypewriterDesc />
-            
+
             <div className="hero-actions">
-              <button 
+              <button
                 className="btn btn-green"
                 onClick={() => scrollTo('services')}
               >
                 Explore Services <ArrowRight size={18} />
               </button>
-              <button 
+              <button
                 className="btn btn-outline"
                 onClick={() => scrollTo('about')}
               >
@@ -208,7 +208,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Right Phone Mockup */}
-          <motion.div 
+          <motion.div
             className="hero-visual"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -217,11 +217,11 @@ const Hero = () => {
             <div className="phone-mockup">
               {/* Phone Notch/Header */}
               <div className="phone-notch"></div>
-              
+
               {/* Phone Screen */}
               <div className="phone-screen">
                 {/* Dynamic Top Area */}
-                <motion.div 
+                <motion.div
                   className="phone-top"
                   animate={{ backgroundColor: activeService.color }}
                   transition={{ duration: 0.8 }}
@@ -237,9 +237,9 @@ const Hero = () => {
                       <User size={14} />
                     </div>
                   </div>
-                  
+
                   <h3 className="phone-title">What can we help with today?</h3>
-                  
+
                   <div className="phone-search">
                     <Search size={16} />
                     <AnimatePresence mode="wait">
@@ -269,7 +269,7 @@ const Hero = () => {
                       <div className="phone-section-title">
                         {activeService.icon} {activeService.title}
                       </div>
-                      
+
                       {activeService.cards.map((card, idx) => (
                         <div className="phone-card" key={idx}>
                           <div className={`phone-card-img ${card.bgClass}`} style={{ backgroundColor: `${activeService.color}20` }}>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const ITEMS = [
   {
-    title: 'City Auto Ride (5 km)',
+    title: 'City Auto Ride ',
 
     image: '/rides/auto.png',
     otherPrice: 110,
@@ -11,7 +11,7 @@ const ITEMS = [
     savings: 25
   },
   {
-    title: 'Mini Cab Ride (8 km)',
+    title: 'Mini Cab Ride ',
 
     image: '/rides/sedan.png',
     otherPrice: 190,
@@ -19,15 +19,15 @@ const ITEMS = [
     savings: 40
   },
   {
-    title: 'Prime Sedan City (10 km)',
+    title: 'Prime Sedan City ',
 
-    image: '/rides/sedan.png',
+    image: 'https://i.pinimg.com/736x/92/12/79/9212792086164812b291af915af4d8ba.jpg',
     otherPrice: 260,
     ourPrice: 215,
     savings: 45
   },
   {
-    title: 'Bike Taxi Express (4 km)',
+    title: 'Bike Taxi Express ',
 
     image: '/rides/motorcycle.png',
     otherPrice: 75,
@@ -35,7 +35,7 @@ const ITEMS = [
     savings: 25
   },
   {
-    title: 'Luxury SUV Ride (15 km)',
+    title: 'Luxury SUV Ride ',
 
     image: '/rides/suv.png',
     otherPrice: 450,
@@ -52,10 +52,10 @@ const RideCarousel = () => {
     if (!containerRef.current) return;
     const container = containerRef.current;
     const center = container.scrollLeft + container.clientWidth / 2;
-    
+
     let closestIndex = 0;
     let minDiff = Infinity;
-    
+
     const cardElements = container.querySelectorAll('.carousel-card');
     cardElements.forEach((card, index) => {
       const cardCenter = card.offsetLeft + card.offsetWidth / 2 - container.offsetLeft;
@@ -77,9 +77,11 @@ const RideCarousel = () => {
 
   return (
     <section className="ride-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
-      <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-
-        <b><p style={{ color: '#666', fontSize: '1.1rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img src="/ride_logo.png" alt="Ride Logo" style={{ height: '35px', marginRight: '10px' }} /> Ride fares on OneBuddy vs Other Apps.</p></b>
+      <div className="container carousel-header-wrap">
+        <p className="carousel-badge-title">
+          <img src="/ride_logo.png" alt="Ride Logo" className="carousel-badge-icon" />
+          <span className="carousel-badge-text">Ride fares on OneBuddy vs Other Apps.</span>
+        </p>
       </div>
 
       {/* Carousel Container */}

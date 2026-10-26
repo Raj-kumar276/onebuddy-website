@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
-  const [form, setForm]       = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors]   = useState({});
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim())    e.name    = 'Please enter your name.';
-    if (!form.email.trim())   e.email   = 'Please enter your email.';
+    if (!form.name.trim()) e.name = 'Please enter your name.';
+    if (!form.email.trim()) e.email = 'Please enter your email.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-                              e.email   = 'Please enter a valid email address.';
+      e.email = 'Please enter a valid email address.';
     if (!form.message.trim()) e.message = 'Please write a message.';
     return e;
   };
@@ -50,7 +50,8 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
           >
-            One Buddy.<br />Endless Everyday<br />Possibilities.
+            One Buddy
+            {/* <br />Endless Everyday Possibilities <br /> */}
           </motion.h2>
 
           <motion.p

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const ITEMS = [
   {
     name: 'Full Body Checkup',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/736x/08/83/3d/08833db5e04338362a4bb3df924992e5.jpg',
     otherPrice: 3999,
     oneBuddyPrice: 2999
   },
@@ -16,7 +16,7 @@ const ITEMS = [
   },
   {
     name: 'OP Booking',
-    image: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/1200x/75/47/0c/75470c097953d444cf0671c60e4d60ec.jpg',
     otherPrice: 499,
     oneBuddyPrice: 399
   },
@@ -28,13 +28,13 @@ const ITEMS = [
   },
   {
     name: 'Home Visits',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/736x/c1/28/9e/c1289e9a1db176a8493e1a42764a1c3b.jpg',
     otherPrice: 499,
     oneBuddyPrice: 399
   },
   {
     name: 'Physiotherapy Session',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600',
+    image: 'https://i.pinimg.com/736x/6c/1b/a7/6c1ba71fcdce6a01db5029f84217d4f9.jpg',
     otherPrice: 999,
     oneBuddyPrice: 799
   }
@@ -73,17 +73,11 @@ const CareCarousel = () => {
 
   return (
     <section className="care-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
-      <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h2 style={{
-          fontSize: 'clamp(2rem, 4vw, 3rem)',
-          fontWeight: '800',
-          color: '#1B1B1B',
-          marginBottom: '0.5rem',
-          fontFamily: 'var(--font-display)'
-        }}>
-          {/* Compare <span style={{ color: '#0d9488' }}>Care & Services</span> in real-time with <span style={{ color: '#06b6d4' }}>OneBuddy</span> */}
-        </h2>
-        <b><p style={{ color: '#666', fontSize: '1.1rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><img src="/care_logo.png" alt="Care Logo" style={{ height: '35px', marginRight: '10px' }} /> Care prices on OneBuddy vs Other Apps. </p></b>
+      <div className="container carousel-header-wrap">
+        <p className="carousel-badge-title">
+          <img src="/care_logo.png" alt="Care Logo" className="carousel-badge-icon" />
+          <span className="carousel-badge-text">Care prices on OneBuddy vs Other Apps.</span>
+        </p>
       </div>
 
       {/* Carousel Container */}

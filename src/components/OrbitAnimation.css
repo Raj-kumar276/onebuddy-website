@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 3;
 }
     #splash {
       --field: min(600px, 95vw, 68vh);
