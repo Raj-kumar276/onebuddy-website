@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
@@ -7,6 +7,8 @@ const Navbar = ({ onPartnerClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const isClickScrolling = useRef(false);
+  const clickTimeout = useRef(null);
 
   const navLinks = [
     { label: 'Home', id: 'home' },
@@ -18,7 +20,9 @@ const Navbar = ({ onPartnerClick }) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
-      
+
+      if (isClickScrolling.current) return;
+
       let current = '';
       navLinks.forEach((link) => {
         const section = document.getElementById(link.id);
@@ -29,10 +33,18 @@ const Navbar = ({ onPartnerClick }) => {
           }
         }
       });
-      
+
       // Handle edge cases like scrolled to very bottom or very top
-      if (window.scrollY === 0) current = 'home';
-      
+      const footerElement = document.getElementById('footer') || document.getElementById('contact');
+      const isAtBottom = window.innerHeight + Math.ceil(window.scrollY) >= document.documentElement.scrollHeight - 60;
+      const isFooterInView = footerElement && footerElement.getBoundingClientRect().top <= window.innerHeight * 0.65;
+
+      if (isAtBottom || isFooterInView) {
+        current = 'footer';
+      } else if (window.scrollY <= 100) {
+        current = 'home';
+      }
+
       if (current !== '') {
         setActiveSection(current);
       }
@@ -41,12 +53,21 @@ const Navbar = ({ onPartnerClick }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     // Trigger once on mount
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (clickTimeout.current) clearTimeout(clickTimeout.current);
+    };
   }, []);
 
   const scrollTo = (e, id) => {
     e.preventDefault();
     setActiveSection(id);
+    isClickScrolling.current = true;
+    if (clickTimeout.current) clearTimeout(clickTimeout.current);
+    clickTimeout.current = setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 1000);
+
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMobileOpen(false);
   };
