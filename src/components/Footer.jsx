@@ -26,7 +26,7 @@ const scrollTo = (e, id) => {
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer id="footer" className="footer">
       <div className="container">
         <motion.div
           className="footer-top"
