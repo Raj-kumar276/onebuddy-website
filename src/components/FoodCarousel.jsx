@@ -131,6 +131,15 @@ const ComparisonCarousel = () => {
                 transition: 'border 0.3s ease'
               }}
             >
+              {/* Base Full Color Image */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }} />
+
               {/* Left Grayscale Image */}
               <div style={{
                 position: 'absolute',
@@ -141,18 +150,6 @@ const ComparisonCarousel = () => {
                 filter: 'grayscale(100%)',
                 clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'
               }} />
-
-              {/* Right Full Color Image */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)'
-              }} />
-
-              {/* Divider Line Removed */}
 
               {/* Top Gradient for Text Readability */}
               <div style={{
@@ -168,7 +165,7 @@ const ComparisonCarousel = () => {
               {/* Top Text */}
               <div style={{
                 position: 'absolute',
-                top: '1.5rem',
+                top: '2.6rem',
                 left: 0,
                 right: 0,
                 textAlign: 'center',

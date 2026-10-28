@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { label: 'Home', id: 'home' },
   { label: 'About', id: 'about' },
   { label: 'Services', id: 'services' },
-  { label: 'Contact', id: 'contact' },
+  { label: 'Contact Us', id: 'contact' },
 ];
 
 const SERVICE_LINKS = [
