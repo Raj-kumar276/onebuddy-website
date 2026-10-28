@@ -140,6 +140,16 @@ const RideCarousel = () => {
                 transition: 'border 0.3s ease'
               }}
             >
+              {/* Base Full Color Image */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center'
+              }} />
+
               {/* Left Grayscale Image */}
               <div style={{
                 position: 'absolute',
@@ -150,17 +160,6 @@ const RideCarousel = () => {
                 backgroundPosition: 'center',
                 filter: 'grayscale(100%)',
                 clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'
-              }} />
-
-              {/* Right Full Color Image */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)'
               }} />
 
               {/* Top Gradient for Text Readability */}
@@ -177,7 +176,7 @@ const RideCarousel = () => {
               {/* Top Text */}
               <div style={{
                 position: 'absolute',
-                top: '1.5rem',
+                top: '2.6rem',
                 left: 0,
                 right: 0,
                 textAlign: 'center',
