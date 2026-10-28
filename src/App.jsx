@@ -12,7 +12,6 @@ import RideCarousel from './components/RideCarousel';
 import CareCarousel from './components/CareCarousel';
 import Services from './components/Services';
 import HomeServices from './components/HomeServicesCarouselS';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PartnerWithUs from './components/PartnerWithUs';
 
@@ -81,7 +80,6 @@ function MainPage({ onPartnerClick }) {
         <CareCarousel />
         <HomeServices />
         <Services />
-        <Contact />
       </main>
       <Footer />
     </>

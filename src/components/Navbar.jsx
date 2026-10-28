@@ -12,7 +12,7 @@ const Navbar = ({ onPartnerClick }) => {
     { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
     { label: 'Services', id: 'services' },
-    { label: 'Contact Us', id: 'contact' },
+    { label: 'Contact Us', id: 'footer' },
   ];
 
   useEffect(() => {

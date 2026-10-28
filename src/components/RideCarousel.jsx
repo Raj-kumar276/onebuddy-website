@@ -19,7 +19,7 @@ const ITEMS = [
     savings: 40
   },
   {
-    title: 'Prime Sedan City ',
+    title: 'Prime SUV 7 seater ',
 
     image: 'https://i.pinimg.com/736x/92/12/79/9212792086164812b291af915af4d8ba.jpg',
     otherPrice: 260,
