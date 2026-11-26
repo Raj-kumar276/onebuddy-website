@@ -75,7 +75,7 @@ const PartnerWithUs = ({ onClose }) => {
             transition={{ duration: 0.7 }}
           >
             <span className="partner-overline">partner with onebuddy</span>
-            <h1 className="partner-headline">Partner <em>With Us</em></h1>
+            <h1 className="partner-headline">Partner <em>with us</em></h1>
             <p className="partner-subtext">
               Grow your business by joining India's fastest-growing multi-service platform.
               Reach thousands of customers instantly.
@@ -150,39 +150,35 @@ const PartnerWithUs = ({ onClose }) => {
               <li>✅ Get More Orders & Bookings</li>
             </ul>
 
-            {/* App Download Buttons */}
+            {/* Coming Soon Badge */}
             <div style={{ marginTop: '2rem' }}>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.85rem' }}>
-                Download the Partner App
-              </p>
-              <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
-                {/* Google Play */}
-                <a
-                  href="https://onebuddy-admin.vercel.app/#/overview"
-                  style={{ display: 'inline-block', transition: 'transform 0.2s', height: '44px' }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                >
-                  <img
-                    src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                    alt="Get it on Google Play"
-                    style={{ height: '64px', marginTop: '-10px' }}
-                  />
-                </a>
-
-                {/* App Store */}
-                <a
-                  href="#"
-                  style={{ display: 'inline-block', transition: 'transform 0.2s', height: '44px' }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                >
-                  <img
-                    src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                    alt="Download on the App Store"
-                    style={{ height: '44px' }}
-                  />
-                </a>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '12px 26px',
+                  background: 'linear-gradient(135deg, rgba(126, 196, 0, 0.18) 0%, rgba(95, 163, 0, 0.12) 100%)',
+                  color: '#143d00',
+                  borderRadius: '9999px',
+                  fontWeight: 800,
+                  fontSize: '1.1rem',
+                  letterSpacing: '0.03em',
+                  border: '1.5px solid rgba(126, 196, 0, 0.45)',
+                  boxShadow: '0 4px 16px rgba(126, 196, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.05)',
+                }}
+              >
+                <span
+                  style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    background: '#65a30d',
+                    display: 'inline-block',
+                    boxShadow: '0 0 10px rgba(101, 163, 13, 0.8)',
+                  }}
+                />
+                Coming Soon
               </div>
             </div>
           </div>

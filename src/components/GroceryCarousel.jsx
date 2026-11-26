@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ITEMS = [
   { title: 'Fresh Whole Milk ', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=600', otherPrice: 35, ourPrice: 30 },
@@ -52,12 +53,29 @@ const GroceryCarousel = () => {
     }
   };
 
+  const scrollToCard = (index) => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const cardElements = container.querySelectorAll('.carousel-card');
+    const targetIndex = Math.max(0, Math.min(cardElements.length - 1, index));
+    const targetCard = cardElements[targetIndex];
+    if (targetCard) {
+      const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2 - container.offsetLeft;
+      const targetScrollLeft = cardCenter - container.clientWidth / 2;
+      container.scrollTo({
+        left: Math.max(0, targetScrollLeft),
+        behavior: 'smooth'
+      });
+      setSelectedCard(targetIndex);
+    }
+  };
+
   useEffect(() => {
     handleScroll();
   }, []);
 
   return (
-    <section className="grocery-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
+    <section className="grocery-section" style={{ padding: '2.5rem 0', background: '#f2f8ea', overflow: 'hidden' }}>
       <div className="container carousel-header-wrap">
         <p className="carousel-badge-title">
           <img src="/grocery_logo.png" alt="Grocery Logo" className="carousel-badge-icon" />
@@ -66,10 +84,29 @@ const GroceryCarousel = () => {
       </div>
 
       {/* Carousel Container */}
-      <div
-        ref={containerRef}
-        onScroll={handleScroll}
-        className="grocery-carousel-container"
+      <div className="carousel-nav-wrapper">
+        <button
+          className="carousel-nav-btn carousel-nav-prev"
+          onClick={() => scrollToCard(selectedCard - 1)}
+          disabled={selectedCard === 0}
+          aria-label="Previous grocery item"
+        >
+          <ChevronLeft size={24} />
+        </button>
+
+        <button
+          className="carousel-nav-btn carousel-nav-next"
+          onClick={() => scrollToCard(selectedCard + 1)}
+          disabled={selectedCard >= ITEMS.length - 1}
+          aria-label="Next grocery item"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        <div
+          ref={containerRef}
+          onScroll={handleScroll}
+          className="grocery-carousel-container"
         style={{
           display: 'flex',
           gap: '1.5rem',
@@ -238,6 +275,7 @@ const GroceryCarousel = () => {
             </motion.div>
           );
         })}
+        </div>
       </div>
     </section>
   );

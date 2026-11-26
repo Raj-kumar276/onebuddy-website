@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ITEMS = [
     { name: 'Home Services', image: 'https://safaiwale.in/wp-content/uploads/2024/11/House-cleaning.webp', otherPrice: 699, oneBuddyPrice: 499 },
@@ -40,12 +41,29 @@ const ComparisonCarousel = () => {
         }
     };
 
+    const scrollToCard = (index) => {
+        if (!containerRef.current) return;
+        const container = containerRef.current;
+        const cardElements = container.querySelectorAll('.carousel-card');
+        const targetIndex = Math.max(0, Math.min(cardElements.length - 1, index));
+        const targetCard = cardElements[targetIndex];
+        if (targetCard) {
+            const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2 - container.offsetLeft;
+            const targetScrollLeft = cardCenter - container.clientWidth / 2;
+            container.scrollTo({
+                left: Math.max(0, targetScrollLeft),
+                behavior: 'smooth'
+            });
+            setSelectedCard(targetIndex);
+        }
+    };
+
     useEffect(() => {
         handleScroll();
     }, []);
 
     return (
-        <section className="comparison-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
+        <section className="comparison-section" style={{ padding: '2.5rem 0', background: '#f2f8ea', overflow: 'hidden' }}>
             <div className="container carousel-header-wrap">
                 <p className="carousel-badge-title">
                     <img src="/home_logo.png" alt="Home Services Logo" className="carousel-badge-icon" />
@@ -54,10 +72,29 @@ const ComparisonCarousel = () => {
             </div>
 
             {/* Carousel Container */}
-            <div
-                ref={containerRef}
-                onScroll={handleScroll}
-                className="carousel-container"
+            <div className="carousel-nav-wrapper">
+                <button
+                    className="carousel-nav-btn carousel-nav-prev"
+                    onClick={() => scrollToCard(selectedCard - 1)}
+                    disabled={selectedCard === 0}
+                    aria-label="Previous home service"
+                >
+                    <ChevronLeft size={24} />
+                </button>
+
+                <button
+                    className="carousel-nav-btn carousel-nav-next"
+                    onClick={() => scrollToCard(selectedCard + 1)}
+                    disabled={selectedCard >= ITEMS.length - 1}
+                    aria-label="Next home service"
+                >
+                    <ChevronRight size={24} />
+                </button>
+
+                <div
+                    ref={containerRef}
+                    onScroll={handleScroll}
+                    className="carousel-container"
                 style={{
                     display: 'flex',
                     gap: '1.5rem',
@@ -225,6 +262,7 @@ const ComparisonCarousel = () => {
                         </motion.div>
                     );
                 })}
+                </div>
             </div>
         </section >
     );

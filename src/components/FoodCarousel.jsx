@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ITEMS = [
   { title: 'Special Chicken Biryani', image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&q=80&w=600', otherPrice: 250, ourPrice: 199 },
@@ -53,13 +54,30 @@ const ComparisonCarousel = () => {
     }
   };
 
+  const scrollToCard = (index) => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const cardElements = container.querySelectorAll('.carousel-card');
+    const targetIndex = Math.max(0, Math.min(cardElements.length - 1, index));
+    const targetCard = cardElements[targetIndex];
+    if (targetCard) {
+      const cardCenter = targetCard.offsetLeft + targetCard.offsetWidth / 2 - container.offsetLeft;
+      const targetScrollLeft = cardCenter - container.clientWidth / 2;
+      container.scrollTo({
+        left: Math.max(0, targetScrollLeft),
+        behavior: 'smooth'
+      });
+      setSelectedCard(targetIndex);
+    }
+  };
+
   // Highlight center on mount
   useEffect(() => {
     handleScroll();
   }, []);
 
   return (
-    <section className="comparison-section" style={{ padding: '2.5rem 0', background: '#fafafa', overflow: 'hidden' }}>
+    <section className="comparison-section" style={{ padding: '2.5rem 0', background: '#f2f8ea', overflow: 'hidden' }}>
       <div className="container carousel-header-wrap">
         <h2 style={{
           fontSize: 'clamp(1.75rem, 4vw, 3rem)',
@@ -77,10 +95,29 @@ const ComparisonCarousel = () => {
       </div>
 
       {/* Carousel Container */}
-      <div
-        ref={containerRef}
-        onScroll={handleScroll}
-        className="carousel-container"
+      <div className="carousel-nav-wrapper">
+        <button
+          className="carousel-nav-btn carousel-nav-prev"
+          onClick={() => scrollToCard(selectedCard - 1)}
+          disabled={selectedCard === 0}
+          aria-label="Previous card"
+        >
+          <ChevronLeft size={24} />
+        </button>
+
+        <button
+          className="carousel-nav-btn carousel-nav-next"
+          onClick={() => scrollToCard(selectedCard + 1)}
+          disabled={selectedCard >= ITEMS.length - 1}
+          aria-label="Next card"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        <div
+          ref={containerRef}
+          onScroll={handleScroll}
+          className="carousel-container"
         style={{
           display: 'flex',
           gap: '1.5rem',
@@ -248,6 +285,7 @@ const ComparisonCarousel = () => {
             </motion.div>
           );
         })}
+        </div>
       </div>
     </section>
   );

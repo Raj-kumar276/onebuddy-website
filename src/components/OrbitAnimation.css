@@ -3,28 +3,27 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: var(--bg-deep, #FFFFFF);
+  min-height: 100vh;
+  background: var(--bg-deep, #f2f8ea);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   z-index: 3;
+  padding-top: 75px;
+  box-sizing: border-box;
 }
     #splash {
-      --field: min(600px, 95vw, 68vh);
-      --badge: calc(var(--field) * 0.285);
-      --orbit-r: calc(var(--field) * 0.41);
+      --field: min(530px, 90vw, 58vh);
+      --badge: calc(var(--field) * 0.33);
+      --orbit-r: calc(var(--field) * 0.42);
       --orbit-time: 20s;
-      background: var(--bg-deep);
-      padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+      background: var(--bg-deep, #f2f8ea);
+      padding: 10px 20px calc(24px + env(safe-area-inset-bottom));
     }
 
     #splash::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(120% 70% at 50% 26%, rgba(126, 196, 0, .12), rgba(126, 196, 0, 0) 65%), radial-gradient(90% 55% at 50% 100%, rgba(27, 27, 27, .04), rgba(27, 27, 27, 0) 70%);
+      display: none;
     }
 
     #splash .ob-stack {
@@ -53,7 +52,7 @@
       height: calc(var(--orbit-r) * 2);
       margin: calc(var(--orbit-r) * -1) 0 0 calc(var(--orbit-r) * -1);
       border-radius: 50%;
-      border: 1.5px dashed rgba(27, 27, 27, .18);
+      border: 2px dashed rgba(75, 120, 25, 0.45);
       animation: ob-spin calc(var(--orbit-time) * 2.6) linear infinite reverse;
       opacity: 0;
       transition: opacity .6s ease .3s, transform .45s ease;

@@ -78,35 +78,35 @@ const Navbar = ({ onPartnerClick }) => {
         <div className="container nav-content">
           {/* Logo */}
           <a href="#home" className="logo" onClick={(e) => scrollTo(e, 'home')} style={{ display: 'flex', alignItems: 'center' }}>
-            <img src="/onebuddy_logo.png" alt="OneBuddy" style={{ height: '36px', marginRight: '10px' }} />
-            OneBuddy
+            <img src="/onebuddy_logo.png" alt="OneBuddy" style={{ height: '46px', marginRight: '10px' }} />
+            <span>
+              <span style={{ color: '#0a0a0a' }}>One</span>
+              <span style={{ color: 'var(--brand-primary, #7EC400)' }}>Buddy</span>
+            </span>
           </a>
 
           {/* Desktop Nav */}
           <div className="nav-links">
-            {navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={(e) => scrollTo(e, link.id)}
-                className={activeSection === link.id ? 'active' : ''}
-                style={{
-                  color: activeSection === link.id ? 'var(--brand-primary, #7EC400)' : '',
-                  fontWeight: activeSection === link.id ? '700' : '500',
-                  borderBottom: activeSection === link.id ? '2px solid var(--brand-primary, #7EC400)' : '2px solid transparent',
-                  paddingBottom: '4px'
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(e) => scrollTo(e, link.id)}
+                  className={`nav-link-pill ${isActive ? 'active' : ''}`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           <button
             className="btn btn-primary nav-btn"
             onClick={onPartnerClick}
           >
-            Partner with Us
+            Partner with us
           </button>
 
           {/* Mobile Toggle */}
@@ -138,28 +138,40 @@ const Navbar = ({ onPartnerClick }) => {
               <X size={28} />
             </button>
 
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={(e) => scrollTo(e, link.id)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07 }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
+            {navLinks.map((link, i) => {
+              const isActive = activeSection === link.id;
+              return (
+                <motion.a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(e) => scrollTo(e, link.id)}
+                  className={`mobile-nav-pill ${isActive ? 'active' : ''}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.07 }}
+                  style={{
+                    padding: '0.65rem 1.6rem',
+                    borderRadius: '9999px',
+                    background: isActive ? 'rgba(126, 196, 0, 0.24)' : 'transparent',
+                    color: isActive ? '#143500' : 'inherit',
+                    fontWeight: '700',
+                    border: 'none',
+                  }}
+                >
+                  {link.label}
+                </motion.a>
+              );
+            })}
 
             <motion.button
-              className="btn btn-primary"
-              style={{ marginTop: '1rem' }}
+              className="btn btn-primary nav-btn"
+              style={{ marginTop: '1rem', background: '#0a0a0a', color: '#fff' }}
               onClick={() => { setMobileOpen(false); onPartnerClick(); }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.07 }}
             >
-              Partner with Us
+              Partner with us
             </motion.button>
           </motion.div>
         )}
